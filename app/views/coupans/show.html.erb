@@ -1,14 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @coupan %>
-
-<div>
   <%= link_to "Edit this coupan", edit_coupan_path(@coupan) %> |
   <%= link_to "Back to coupans", coupans_path %>
 
   <%= button_to "Destroy this coupan", @coupan, method: :delete %>
-</div>
-
 
 <section class="offer-dedicated-body section-padding">
   <div class="container">
@@ -18,20 +13,19 @@
           <div class="shadow-sm rounded overflow-hidden mb-4">
             <div class="bg-white coupon-deal-detail-main">
               <div class="coupon-deal-detail-main-block">
-                <img class="img-fluid coupon-deal-detail-main-img" src="images/restaurant-slider.png">
+                <%= image_tag @coupan.image.url, class: "img-fluid coupon-deal-detail-main-img" %>
                 <div class="got-badge">
-                  <img class="user-cou-img" src="images/user-coupans/1.png" alt="Generic placeholder image">
+                  <%= image_tag @coupan.main_image.url, class: "user-cou-img" %>
                 </div>
               </div>
               <div class="coupon-deal-detail-main-body p-4">
-                <h3 class="pr-lg-5 mb-3 text-gray-900">Amazon Coupons & Offers
+                <h3 class="pr-lg-5 mb-3 text-gray-900"><%= @coupan.coupon_code %>
                   <span class="badge badge-danger ml-2">70% Success
                   </span>
                 </h3>
                 <h6 class="coupon-deal-detail-main-body-p font-weight-light pr-lg-5 text-secondary">
-                  Amazon Promo Code - Collect Coupons and Save Upto 50% on Fashion, Electronics,
-                  Home & more</h6>
-                <p class="mb-0 mt-4 font-weight-light text-gray-500"><i class="icofont-users-alt-4 text-danger mr-2"></i> 307 People Used Today <i class="ml-4 icofont-clock-time text-danger mr-2"></i> Ends 09.15.2020</p>
+                  <%= @coupan.redemption_instructions %></h6>
+                <p class="mb-0 mt-4 font-weight-light text-gray-500"><i class="icofont-users-alt-4 text-danger mr-2"></i> 307 People Used Today <i class="ml-4 icofont-clock-time text-danger mr-2"></i> Ends <%= @coupan.expiration_date %></p>
               </div>
             </div>
             <div class="custom-nav coupon-deal-detail-main-footer bg-white border-top d-flex align-items-center px-4">
