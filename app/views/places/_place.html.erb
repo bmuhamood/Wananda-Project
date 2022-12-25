@@ -1,0 +1,26 @@
+<div id="<%= dom_id place %>"></div>
+
+<div class="col-xl-3 col-sm-6 mb-4">
+  <div class="custom-card shadow-sm h-100 stor-card">
+    <div class="custom-card-image">
+      <div class="member-plan"><span class="badge badge-primary">Gold Member</span></div>
+      <a href="#">
+        <%= image_tag place.main_image.url, size: "255x150", class: "img-fluid item-img" %>
+      </a>
+      <div class="store-star"><span class="badge badge-success"><i class="icofont-star"></i> 3.1</span>
+      </div>
+    </div>
+    <div class="p-3">
+      <div class="custom-card-body">
+        <h6 class="mb-0"><a class="text-gray-900" href="#"><%= link_to place.title, place_path(place) %></a></h6>
+        <p class="text-gray-500 mb-2"> <%= place.country %></p>
+        <p class="text-gray mb-0"><span class="text-black">Variety store</span></p>
+      </div>
+    </div>
+    <div class="p-3 border-top">
+      <div class="custom-card-badge">
+        <span class="badge badge-danger"><i class="icofont-sale-discount"></i> OFFER</span><%= place.offer_code %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wananda - Coupons, Deals & Discounts</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/stylesheets/theme.css" rel="stylesheet">
+    <link href="/assets/vendor/icons/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/assets/vendor/select2/css/select2-bootstrap.css" />
+    <link href="/assets/vendor/select2/css/select2.min.css" rel="stylesheet" />
+    <link href="/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/vendor/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/assets/vendor/owl-carousel/owl.theme.css">
+    <link href="/assets/stylesheets/osahan.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.icofont.com/icofont.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src='/countries_regions_and_cities_by_pete/jquery-3.6.0.min.js'></script>  
+  </head>
+  <body id="page-top">
+      <div id="wrapper">
+        <div id="content-wrapper">
+          <div id="content">
+            <%= render partial: "partials/navbar" %>
+            <%= yield %>
+            <%= render partial: "partials/footer" %>   
+            <a class="scroll-to-top rounded-circle" href="#page-top">
+              <i class="fas fa-angle-up"></i>
+            </a>
+          
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+
+    <script src="/assets/vendor/jquery/jquery.min.js" type="c8ac024602641c52fbfb6f22-text/javascript"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js" type="c8ac024602641c52fbfb6f22-text/javascript"></script>
+    <script src="/assets/vendor/jquery-easing/jquery.easing.min.js" type="c8ac024602641c52fbfb6f22-text/javascript"></script>
+    <script src="/assets/vendor/select2/js/select2.min.js" type="c8ac024602641c52fbfb6f22-text/javascript"></script>
+    <script src="/assets/vendor/owl-carousel/owl.carousel.js" type="c8ac024602641c52fbfb6f22-text/javascript"></script>
+    <script src="/assets/javascripts/custom.js" type="c8ac024602641c52fbfb6f22-text/javascript"></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" data-cf-beacon='{"rayId":"779b09d3dd511262","version":"2022.11.3","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>  
+  </body>
+</html>

@@ -1,0 +1,165 @@
+<p style="color: green"><%= notice %></p>
+<section class="offer-dedicated-banner text-center">
+  <%= image_tag @offer.main_image.url, style: "width: 800px; height: 300px;", class: "img-fluid" %>
+</section>
+<section class="offer-dedicated-header bg-gray-600 pb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="offer-dedicated-action-btn float-right">
+          <button class="btn btn-outline-light btn-sm" type="button"><i class="icofont-heart"></i> Mark
+          as Favourite</button>
+          <button class="btn btn-outline-warning btn-sm" type="button"><i class="icofont-location-arrow"></i> Share</button>
+        </div>
+        <div class="button-g-btn button-g-btn-up">
+          <%= image_tag @offer.main_image.url, class: "img-fluid" %>
+          <span><%= @offer.title %></span>
+        </div>
+        <h3 class="font-weight-bold text-white"> <%= @offer.title %></h3>
+        <h6 class="font-weight-light text-gray-400"><%= @offer.offer_code %> &amp; more
+        </h6>
+        <p class="mb-0 mt-4 text-white-50"><i class="icofont-users-alt-4 mr-2 text-warning"></i> 307
+          People Used Today <i class="ml-2 icofont-clock-time mr-2 ml-4 text-warning"></i> Ends
+          <%= @offer.expiration_date %>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="custom-nav bg-white shadow-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#offers">Offers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#address">Address</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#mo">More Offers</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="offer-dedicated-body section-padding">
+  <div class="container">
+    <div class="row pt-lg-4">
+      <div class="col-xl-8 col-sm-12">
+        <div class="offer-dedicated-body-left">
+          <div id="about" class="bg-white shadow-sm rounded p-4 mb-4">
+            <h5 class="mb-4  text-gray-900">About</h5>
+            <p><%= @offer.offer_instructions %>
+            </p>
+            <ul class="dot-list">
+              <li>Upto 30-70% Off on Clothing, Footwear, Accessories & More</li>
+              <li>Valid till <a href="#">31st March</a></li>
+            </ul>
+          </div>
+          <div id="address" class="bg-white shadow-sm rounded p-4 mb-4">
+            <h5 class="mb-4  text-gray-900">Address</h5>
+            <p class="mb-3"><%= @offer.address %>
+            </p>
+            <p class="mb-2 text-black"><i class="icofont-phone-circle text-primary mr-2"></i> <%= @offer.mobile %>
+            </p>
+            <p class="mb-2 text-black"><i class="icofont-email text-primary mr-2"></i>
+              <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="90e9ffe5e2f5fdf1f9fcd0f7fdf1f9fcbef3fffd">[email&#160;protected]</a>, <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b1c8dec4c3d4dcd0d8ddf1d6dcd0d8dd9fd2dedc">[email&#160;protected]</a>
+            </p>
+            <p class="mb-2 text-black"><i class="icofont-clock-time text-primary mr-2"></i> Today <%= @offer.opening_time %> – <%= @offer.closing_time %>
+              <span class="badge badge-success"> OPEN NOW </span>
+            </p>
+            <hr class="clearfix">
+            <div class="address-map">
+              <div class="mapouter">
+                <div class="gmap_canvas"><iframe width="100%" height="170" id="gmap_canvas" src="https://maps.google.com/maps?q=university%20of%20san%20francisco&amp;t=&amp;z=9&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <% @offer.images.each do |image| %>
+            <%= image_tag(image.url) %>
+            <% end %>
+          </div>
+          <div id="eo" class="bg-white rounded shadow-sm p-4 mb-4  coin-pcard-block">
+            <h5 class="mb-3 text-gray-900">Related Offers</h5>
+            <p class="mb-4 col-10 p-0">It is a long established fact that a reader will be distracted
+              by the readable content of a page when looking at its layout
+            </p>
+            <div class="owl-carousel owl-theme owl-carousel-two owl-carousel-space coin-pcard-carousel">
+              <div class="item">
+                <div class="border rounded">
+                  <div class="media p-3 border-bottom align-items-center">
+                    <div class="u-avatar">
+                      <%= image_tag @offer.main_image.url, class: "img-fluid rounded w-40" %>
+                    </div>
+                    <div class="media-body pl-3">
+                      <h4 class="h6 mb-1 text-gray-900"><%= @offer.title %></h4>
+                      <p class="d-block text-muted m-0"><%= @offer.offer_code %></p>
+                    </div>
+                  </div>
+                  <div class="media p-3 align-items-center">
+                    <div class="u-avatar">
+                      <small class="mb-1">Ends on <%= @offer.expiration_date %></small>
+                      <h6 class="m-0 text-danger"><i class="icofont-sale-discount"></i> 50 % OFF</h6>
+                    </div>
+                    <div class="media-body pl-3">
+                      <button type="button" class="btn btn-primary float-right btn-sm">Get
+                      Offer</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-xl-4 col-sm-12">
+        <div class="bg-white shadow-sm rounded mb-4">
+          <div class="p-4">
+            <h5 class="mb-0  text-gray-900">Featured Offers</h5>
+          </div>
+          <div class="px-1 pt-0 pb-1">
+            <div class="list-design-card active p-3">
+              <a href="#">
+                <span class="float-right text-info">60% OFF</span>
+                <div class="media">
+                  <%= image_tag @offer.main_image.url, class: "mr-3" %>
+                  <div class="media-body">
+                    <h6 class="mb-1 text-gray-900"><%= @offer.title %></h6>
+                    <p class="mb-0 text-gray-500">Ends <%= @offer.expiration_date %> Days</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white shadow-sm rounded p-4 mb-4">
+          <h5 class="mb-4  text-gray-900">Terms and Conditions</h5>
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
+            of classical Latin literature from 45 BC, making it over 2000 years old. Richard
+            McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the
+            more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the
+            cites of the word in classical literature, discovered the undoubtable source. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+</div>
+</div>
+
+<div>
+  <%= link_to "Edit this offer", edit_offer_path(@offer) %> |
+  <%= link_to "Back to offers", offers_path %>
+
+  <%= button_to "Destroy this offer", @offer, method: :delete %>
+</div>

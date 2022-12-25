@@ -1,0 +1,24 @@
+<div id="<%= dom_id offer %>"></div>
+
+  <div class="col-xl-4 col-sm-6 mb-4">
+    <div class="custom-card shadow-sm h-100">
+      <div class="custom-card-image">
+        <%= image_tag offer.main_image.url, size: "255x150", class: "img-fluid item-img" %>
+        <div class="button-g-btn button-g-btn-up">
+          <%= image_tag offer.main_image.url, class: "img-fluid" %>
+          <span><%= offer.title %></span>
+        </div>
+      </div>
+      <div class="p-3 pt-4">
+        <div class="custom-card-body">
+          <h6 class="mb-3"><a class="text-gray-900" href="#"><%= link_to offer.offer_code, offer_path(offer) %></a>
+          </h6>
+          <p class="text-gray-500"><i class="icofont-clock-time"></i> <%= offer.expiration_date %></p>
+        </div>
+        <div class="custom-card-footer d-flex align-items-center">
+          <span class="text-danger"><i class="icofont-sale-discount"></i> 50 % OFF</span>
+          <%= link_to "Get Offer", offer, class: "btn btn-sm btn-white ml-auto" %>
+        </div>
+      </div>
+    </div>
+  </div>

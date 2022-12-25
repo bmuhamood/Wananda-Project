@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  main_image: MyString
+  offer_code: MyString
+  offer_instructions: MyText
+  expiration_date: 2022-12-24 09:48:22
+  opening_time: 2022-12-24 09:48:22
+  closing_time: 2022-12-24 09:48:22
+  mobile: MyString
+  images: MyString
+  shop_number: MyString
+  street: MyString
+  landmark: MyString
+
+two:
+  title: MyString
+  main_image: MyString
+  offer_code: MyString
+  offer_instructions: MyText
+  expiration_date: 2022-12-24 09:48:22
+  opening_time: 2022-12-24 09:48:22
+  closing_time: 2022-12-24 09:48:22
+  mobile: MyString
+  images: MyString
+  shop_number: MyString
+  street: MyString
+  landmark: MyString

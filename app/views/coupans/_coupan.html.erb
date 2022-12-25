@@ -1,0 +1,13 @@
+<div id="<%= dom_id coupan %>"></div>
+<div class="col-xl-3 col-md-12 mb-4">
+  <div class="bg-white shadow-sm p-4 text-center h-100 rounded">
+    <div class="all-coupon">
+        <%= image_tag coupan.main_image.url, alt: "Generic placeholder image", class: "mb-3 user-cou-img", style: "width: 55px; height: 55px;" %>
+      <h4 class="mt-1 h5 text-gray-900"><%= coupan.title %></h4>
+      <h6 class="mb-4 mt-3 pb-2 text-secondary font-weight-normal"><%= coupan.coupon_code %></h6>
+    </div>
+    <div class="mb-0">
+      <p class="mb-0 text-danger"><i class="icofont-clock-time"></i> Ends <%= coupan.expiration_date %></p>
+    </div>
+  </div>
+</div>

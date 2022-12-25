@@ -1,0 +1,87 @@
+<%= form_with(model: place) do |form| %>
+  <% if place.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
+
+      <ul>
+        <% place.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :main_image, style: "display: block" %>
+    <%= form.file_field :main_image %>
+  </div>
+
+  <div>
+    <%= form.label :offer_code, style: "display: block" %>
+    <%= form.text_field :offer_code %>
+  </div>
+
+  <div>
+    <%= form.label :offer_instructions, style: "display: block" %>
+    <%= form.text_area :offer_instructions %>
+  </div>
+
+  <div>
+    <%= form.label :expiration_date, style: "display: block" %>
+    <%= form.datetime_field :expiration_date %>
+  </div>
+
+  <div>
+    <%= form.label :opening_time, style: "display: block" %>
+    <%= form.time_field :opening_time %>
+  </div>
+
+  <div>
+    <%= form.label :closing_time, style: "display: block" %>
+    <%= form.time_field :closing_time %>
+  </div>
+
+  <div>
+    <%= form.label :mobile, style: "display: block" %>
+    <%= form.text_field :mobile %>
+  </div>
+
+  <div>
+    <%= form.label :images, style: "display: block" %>
+    <%= form.file_field :images, multiple: true %>
+  </div>
+
+  <div>
+    <%= form.label :shop_number, style: "display: block" %>
+    <%= form.text_field :shop_number %>
+  </div>
+  
+  <div class="field" id="country_field">
+    <%= render partial: "shared/country_select_by_pete", locals: {model: form.object.class.name, label: "Country", selected: form.object.country} %>
+    </div>
+  <div class="field" id="region_field">
+    <%= render partial: "shared/region_select_by_pete", locals: {model: form.object.class.name, label: "Region / State", selected_country: form.object.country, selected: form.object.region} %>
+    </div>
+   <div class="field" id="city_field">
+    <%= render partial: "shared/city_select_by_pete", locals: {model: form.object.class.name, label: "City", selected_region: form.object.region, selected_country: form.object.country, selected: form.object.city} %>
+    </div>
+  
+  <div>
+    <%= form.label :street, style: "display: block" %>
+    <%= form.text_field :street %>
+  </div>
+
+  <div>
+    <%= form.label :landmark, style: "display: block" %>
+    <%= form.text_field :landmark %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

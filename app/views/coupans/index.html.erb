@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+<%= link_to "New coupan", new_coupan_path %>
+
+<section class="bg-gradient-primary section-padding">
+  <div class="container">
+    <div class="row py-lg-5">
+      <div class="col-md-6 mx-auto text-center">
+        <h1 class="text-white mb-3">Coupans</h1>
+        <h6 class="text-white-50 mb-0">Build a beautiful, modern website with flexible Bootstrap
+          components built from scratch.</h6>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-padding">
+  <div class="container">
+    <div class="row pt-lg-4">
+      <% @coupans.each do |coupans| %>
+      <%= render coupans %>
+      <% end %>
+    </div>
+  </div>
+</section>
