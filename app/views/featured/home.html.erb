@@ -7,15 +7,13 @@
       <h1 class="h5 mb-0 text-gray-900">Verified Offers</h1>
       <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-eye fa-sm text-white-50"></i> View All</a>
     </div>
-
     <div class="row">
-      <% @featured_offers.each do |offer| %>
+      <% @verified_offers.each do |offer| %>
+      <% Offer.where(verified: true).each do |offer| %>
       <div class="col-xl-3 col-sm-6">
         <div class="custom-card shadow-sm h-100">
           <div class="custom-card-image">
-            <a href="#">
-              <%= image_tag offer.main_image.url, size: "255x150", class: "img-fluid item-img" %>
-            </a>
+            <a href="#"><%= image_tag offer.main_image.url, size: "255x150", class: "img-fluid item-img" %></a>
             <div class="button-g-btn button-g-btn-up">
               <%= image_tag offer.main_image.url, class: "img-fluid" %>
               <span><%= offer.title %></span>
@@ -32,6 +30,7 @@
           </div>
         </div>
       </div>
+      <% end %>     
       <% end %>
     </div>
   </div>
@@ -41,7 +40,7 @@
 <section class="section-padding homepage-store-block">
   <div class="container">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h5 mb-0 text-gray-900">Top Featured Stores</h1>
+      <h1 class="h5 mb-0 text-gray-900">Top Stores</h1>
       <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-eye fa-sm text-white-50"></i> View All</a>
     </div>
     <div class="row  align-items-center">
@@ -89,7 +88,7 @@
 <section class="section-padding homepage-coupon">
   <div class="container">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h5 mb-0 text-gray-900">Top Featured Coupons</h1>
+      <h1 class="h5 mb-0 text-gray-900">Top Coupons</h1>
       <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-eye fa-sm text-white-50"></i> View All</a>
     </div>
     <div class="row  align-items-center">
@@ -150,12 +149,10 @@
             </div>
           </div>
         </div>
-
       </div>
       <% end %>
       <% end %>
     </div>
-
     <% end %>
   </div>
 </section>
