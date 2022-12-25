@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'featured/home'
   resources :coupans
   resources :places
   get 'user_profile/show'

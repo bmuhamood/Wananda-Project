@@ -75,6 +75,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def offer_params
-      params.require(:offer).permit(:title, :main_image, :offer_code, :offer_instructions, :expiration_date, :opening_time, :closing_time, :mobile, :address, {images: []}, :category_id)
+      params.require(:offer).permit(:title, :main_image, :offer_code, :offer_instructions, :expiration_date, :opening_time, :closing_time, :mobile, :address, {images: []}, :category_id, :featured)
     end
 end

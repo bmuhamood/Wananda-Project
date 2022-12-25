@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_25_095031) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_25_103926) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_25_095031) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.boolean "featured", default: false
   end
 
   create_table "offers", force: :cascade do |t|
@@ -47,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_25_095031) do
     t.string "discounts"
     t.string "images", default: [], array: true
     t.integer "category_id"
+    t.boolean "featured", default: false
   end
 
   create_table "places", force: :cascade do |t|
@@ -67,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_25_095031) do
     t.string "country"
     t.string "region"
     t.string "city"
+    t.boolean "featured", default: false
   end
 
 end
