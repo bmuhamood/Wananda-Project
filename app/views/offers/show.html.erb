@@ -89,23 +89,24 @@
           <div id="eo" class="bg-white rounded shadow-sm p-4 mb-4  coin-pcard-block">
             <h5 class="mb-3 text-gray-900">Related Offers</h5>
             <p class="mb-4 col-10 p-0">It is a long established fact that a reader will be distracted
-              by the readable content of a page when looking at its layout
-            </p>
+              by the readable content of a page when looking at its layout</p>
             <div class="owl-carousel owl-theme owl-carousel-two owl-carousel-space coin-pcard-carousel">
               <div class="item">
+                <% if @offer.present? && @related_offer.present? %>
+                <% @related_offers.each do |offer| %>
                 <div class="border rounded">
                   <div class="media p-3 border-bottom align-items-center">
                     <div class="u-avatar">
-                      <%= image_tag @offer.main_image.url, class: "img-fluid rounded w-40" %>
+                      <%= image_tag offer.main_image.url, class: "img-fluid rounded w-40" %>
                     </div>
                     <div class="media-body pl-3">
-                      <h4 class="h6 mb-1 text-gray-900"><%= @offer.title %></h4>
-                      <p class="d-block text-muted m-0"><%= @offer.offer_code %></p>
+                      <h4 class="h6 mb-1 text-gray-900"><%= offer.title %></h4>
+                      <p class="d-block text-muted m-0"><%= offer.offer_code %></p>
                     </div>
                   </div>
                   <div class="media p-3 align-items-center">
                     <div class="u-avatar">
-                      <small class="mb-1">Ends on <%= @offer.expiration_date %></small>
+                      <small class="mb-1">Ends on <%= offer.expiration_date %></small>
                       <h6 class="m-0 text-danger"><i class="icofont-sale-discount"></i> 50 % OFF</h6>
                     </div>
                     <div class="media-body pl-3">
@@ -114,10 +115,11 @@
                     </div>
                   </div>
                 </div>
+                <% end %>
+                <% end %>
               </div>
             </div>
           </div>
-
         </div>
       </div>
       <div class="col-xl-4 col-sm-12">
