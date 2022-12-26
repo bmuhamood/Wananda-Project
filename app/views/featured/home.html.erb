@@ -1,7 +1,7 @@
 <%= render partial: "partials/featured_search" %>
 
 <!-- Top Offers -->
-<section class="section-padding homepage-view-offers">
+<!-- <section class="section-padding homepage-view-offers">
   <div class="container">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h5 mb-0 text-gray-900">Verified Offers</h1>
@@ -34,7 +34,7 @@
       <% end %>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- Top Stores -->
 <section class="section-padding homepage-store-block">
@@ -50,7 +50,7 @@
           <div class="item">
             <div class="custom-card bg-white shadow-sm h-100 stor-card">
               <div class="custom-card-image">
-                <div class="member-plan"><span class="badge badge-warning">Gold Member</span></div>
+                <div class="member-plan"><span class="badge badge-success" style="<%= "background-color: green; color: white" if place.verified %>"><%= place.verified ? "Verified" : "" %></span></div>
                 <a href="#">
                   <%= image_tag place.main_image.url, class: "img-fluid item-img" %>
                 </a>

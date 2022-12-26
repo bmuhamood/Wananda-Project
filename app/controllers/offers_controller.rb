@@ -8,7 +8,6 @@ class OffersController < ApplicationController
 
   # GET /offers/1 or /offers/1.json
   def show
-    @related_offers = @offer.categories.map(&:offers).flatten.uniq - [@offer]
   end
 
   # GET /offers/new

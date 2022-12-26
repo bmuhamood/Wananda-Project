@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  has_and_belongs_to_many :offers
+  has_many :offers
 end

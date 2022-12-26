@@ -1,6 +1,6 @@
 class Offer < ApplicationRecord
   
-  has_and_belongs_to_many :categories
+  has_many :category
 
   mount_uploader :main_image, OffersImagesUploader
   mount_uploaders :images, ImageUploader
