@@ -8,6 +8,7 @@ class CoupansController < ApplicationController
 
   # GET /coupans/1 or /coupans/1.json
   def show
+    @coupan.increment!(:view_count)
   end
 
   # GET /coupans/new
