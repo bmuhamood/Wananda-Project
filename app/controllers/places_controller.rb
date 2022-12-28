@@ -66,6 +66,6 @@ include GlobalizationByPete
 
     # Only allow a list of trusted parameters through.
     def place_params
-      params.require(:place).permit(:title, :main_image, :offer_code, :offer_instructions, :expiration_date, :opening_time, :closing_time, :mobile, :images, :shop_number, :city, :region, :country, :street, :landmark, :featured, :verified)
+      params.require(:place).permit(:title, :main_image, :offer_code, :offer_instructions, :expiration_date, :opening_time, :closing_time, :mobile, :images, :shop_number, :country_id, :state_id, :city_id, :street, :landmark, :featured, :verified)
     end
 end

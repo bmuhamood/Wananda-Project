@@ -8,12 +8,13 @@ gem "rails", "~> 7.0.4"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
-
+gem 'seed_dump'
 gem "carrierwave"
 gem "mini_magick"
-gem 'countries_regions_and_cities_by_pete'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'faraday'
+gem 'httparty'
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
@@ -75,3 +76,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "countries", "~> 5.2"

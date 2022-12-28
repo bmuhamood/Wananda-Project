@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  get 'cities/index'
+  get 'cities/create'
+  get 'cities/show'
+  get 'states/index'
+  get 'states/create'
+  get 'states/show'
+  get 'countries/index'
+  get 'countries/create'
+  get 'countries/show'
   get 'featured/home'
   resources :coupans
   resources :places
@@ -8,6 +17,12 @@ Rails.application.routes.draw do
   get 'main/home'
   get 'main/index'
   resources :categories
-get '/places_get_regions', to: 'places#get_regions' 
-get '/places_get_cities', to: 'places#get_cities' 
+  resources :countries, only: [:index, :show, :create, :update]
+  resources :states, only: [:index, :show, :create, :update]
+  resources :cities, only: [:index, :show, :create, :update]
+  get '/countries/:id', to: 'countries#show'
+  get '/categories/:id', to: 'categories#show'
+  get '/coupons', to: 'coupans#index'
+  get '/stores', to: 'places#index'
+  get '/offers', to: 'offers#index'
 end

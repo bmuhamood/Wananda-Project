@@ -1,167 +1,40 @@
-<p style="color: green"><%= notice %></p>
 
-
-<%= link_to "New offer", new_offer_path %>
-<section class="section-padding">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 mt-lg-4 mb-4">
-        <div class="page-title-h5 d-flex align-items-center">
-          <h5 class="my-0 text-gray-900">All Product Deals</h5>
-          <div class="dropdown ml-auto">
-            <a class="btn btn-secondary dropdown-toggle btn-sm border-white-btn" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Sort by: <span class="text-theme">Popularity</span> &nbsp;&nbsp;
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="#">Percent</a>
-              <a class="dropdown-item" href="#">Amount</a>
-              <a class="dropdown-item" href="#">Newest</a>
+  <section class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mt-lg-4 mb-4">
+          <div class="page-title-h5 d-flex align-items-center">
+            <h5 class="my-0 text-gray-900">All Product Deals</h5>
+            <div class="dropdown ml-auto">
+              <a class="btn btn-secondary dropdown-toggle btn-sm border-white-btn" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sort by: <span class="text-theme">Popularity</span> &nbsp;&nbsp;
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="#">Percent</a>
+                <a class="dropdown-item" href="#">Amount</a>
+                <a class="dropdown-item" href="#">Newest</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row mb-lg-4">
-      <div class="col-xl-3 col-sm-4">
-        <div class="filters shadow-sm rounded bg-white mb-4">
-          <div class="filters-header border-bottom pl-4 pr-4 pt-3 pb-3">
-            <h5 class="m-0">Filter By</h5>
-          </div>
-          <div class="filters-body">
-            <div id="accordion">
-              <div class="filters-card border-bottom p-4">
-                <div class="filters-card-header" id="headingOne">
-                  <h6 class="mb-0">
-                    <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Brands <i class="icofont-thin-down float-right"></i>
-                    </a>
-                  </h6>
-                </div>
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                  <div class="filters-card-body card-shop-filters">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb1">
-                      <label class="custom-control-label" for="cb1">Samsung </label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb2">
-                      <label class="custom-control-label" for="cb2">Adidas</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb3">
-                      <label class="custom-control-label" for="cb3">Apple</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb4">
-                      <label class="custom-control-label" for="cb4">Nokia</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb3">
-                      <label class="custom-control-label" for="cb3">Apple</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb4">
-                      <label class="custom-control-label" for="cb4">Nokia</label>
-                    </div>
-                    <div class="mt-2"><a href="#" class="link">See all</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="filters-card border-bottom p-4">
-                <div class="filters-card-header" id="headingTwo">
-                  <h6 class="mb-0">
-                    <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
-                    Categories <i class="icofont-thin-down float-right"></i>
-                    </a>
-                  </h6>
-                </div>
-                <div id="collapsetwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
-                  <div class="filters-card-body card-shop-filters">
-                    <form class="filters-search mb-3">
-                      <div class="form-group">
-                        <i class="icofont-search"></i>
-                        <input type="text" class="form-control" placeholder="Search Brand">
-                      </div>
-                    </form>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb6">
-                        <% Category.all.each do |category| %>
-                          <li><%= link_to category.name, category_path(category), class: "custom-control-label" %></li>
-                        <% end %>
-                    </div>
-                    <div class="mt-2"><a href="#" class="link">See all</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="filters-card border-bottom p-4">
-                <div class="filters-card-header" id="headingCategory">
-                  <h6 class="mb-0">
-                    <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="true" aria-controls="collapseCategory">
-                    Stores <i class="icofont-thin-down float-right"></i>
-                    </a>
-                  </h6>
-                </div>
-                <div id="collapseCategory" class="collapse" aria-labelledby="headingCategory" data-parent="#accordion">
-                  <div class="filters-card-body card-shop-filters">
-                    <div class="custom-control custom-checkbox">
-                      <% Offer.all.each do |offer| %>
-                        <%= check_box_tag "offer_ids[]", offer.id, false, id: "offer_#{offer.id}", class: "custom-control-input" %>
-                        <%= label_tag "offer_#{offer.id}", offer.title, class: "custom-control-label" %>
-                      <% end %>
-                    </div>
-                    <div class="mt-2"><a href="#" class="link">See all</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="filters-card p-4">
-                <div class="filters-card-header" id="headingOffer">
-                  <h6 class="mb-0">
-                    <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseOffer" aria-expanded="true" aria-controls="collapseOffer">
-                    Type of Offer <i class="icofont-thin-down float-right"></i>
-                    </a>
-                  </h6>
-                </div>
-                <div id="collapseOffer" class="collapse" aria-labelledby="headingOffer" data-parent="#accordion">
-                  <div class="filters-card-body card-shop-filters">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb6">
-                      <label class="custom-control-label" for="cb6">Flight <small class="text-danger float-right">200 deal</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb7">
-                      <label class="custom-control-label" for="cb7">Recharge <small class="text-danger float-right">34 deal</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb8">
-                      <label class="custom-control-label" for="cb8">Travel <small class="text-danger float-right">56 deal</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb9">
-                      <label class="custom-control-label" for="cb9">Food <small class="text-danger float-right">98 deal</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb10">
-                      <label class="custom-control-label" for="cb10"> Fashion <small class="text-danger float-right">21 deal</small></label>
-                    </div>
-                    <div class="mt-2"><a href="#" class="link">See all</a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> 
+      <div class="row mb-lg-4">
+
+        <%= render partial: "partials/filters" %>
+
+        <div class="col-xl-9 col-sm-8">
+          <div class="row">
+          <% @offers.each do |offer| %>
+          <%= render offer %>
+          <% end %>
+        </div>
+
+        <div class="col-xl-12 text-center">
+          <a href="#" class="btn btn-primary shadow btn-sm show-more-btn">Loading <i class="fas fa-circle-notch fa-spin"></i></a>
         </div>
       </div>
-      <div class="col-xl-9 col-sm-8">
-        <div class="row">
-        <% @offers.each do |offer| %>
-        <%= render offer %>
-        <% end %>
-      </div>
 
-      <div class="col-xl-12 text-center">
-        <a href="#" class="btn btn-primary shadow btn-sm show-more-btn">Loading <i class="fas fa-circle-notch fa-spin"></i></a>
-      </div>
-    </div>
-  </div>    </div>
-</section>
-
+    </div>    </div>
+  </section>
+  <p style="color: green"><%= notice %></p>
+  <%= link_to "New offer", new_offer_path %>  

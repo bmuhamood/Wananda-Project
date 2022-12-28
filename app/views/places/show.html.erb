@@ -90,41 +90,41 @@
           </div>
           <div id="eo" class="bg-white rounded shadow-sm p-4 mb-4 coin-tiers-block">
             <button type="button" class="btn btn-success float-right btn-sm"> View All </button>
-            <h5 class="mb-3 text-gray-900">Stores</h5>
+            <h5 class="mb-3 text-gray-900">Top Verified Stores</h5>
             <p class="mb-4 col-10 p-0">It is a long established fact that a reader will be distracted
               by the readable content of a page when looking at its layout</p>
             <div class="owl-carousel owl-theme owl-carousel-two owl-carousel-space coin-tiers-carousel">
+              <% Place.where(verified: true).each do |place| %>
               <div class="item">
                 <div class="custom-card shadow-sm h-100 stor-card">
                   <div class="custom-card-image">
                     <div class="member-plan"><span class="badge badge-gold">Gold Member</span>
                     </div>
                     <a href="#">
-                      <img class="img-fluid item-img" src="images/custom-card/1.png">
+                      <%= image_tag place.main_image.url, class: "img-fluid item-img" %>
                     </a>
                     <div class="store-star"><span class="badge badge-success"><i class="icofont-star"></i> 3.1</span></div>
                   </div>
                   <div class="p-3">
                     <div class="custom-card-body">
-                      <h6 class="mb-0"><a class="text-gray-900" href="#">Wal-Mart Stores,
-                          Inc.</a></h6>
-                      <p class="text-gray-500 mb-2"> United Kingdom</p>
-                      <p class="text-gray-500 mb-2"><span class="text-black">Variety store</span>
+                      <h6 class="mb-0"><a class="text-gray-900" href="#"><%= place.title %></a></h6>
+                      <p class="text-gray-500 mb-2"> <%= place.country %></p>
+                      <p class="text-gray-500 mb-2"><span class="badge badge-success" style="<%= "background-color: green; color: white" if place.verified %>"><%= place.verified ? "Verified" : "" %></span>
                       </p>
                     </div>
                     <div class="custom-card-badge">
                       <span class="badge badge-danger"><i class="icofont-sale-discount"></i>
-                        OFFER</span> Flat 50% on all Stores
+                        OFFER</span> <%= place.offer_code %>
                     </div>
                   </div>
                 </div>
               </div>
+              <% end %>
             </div>
           </div>
           <div id="address" class="bg-white shadow-sm rounded p-4 mb-4">
             <h5 class="mb-4  text-gray-900">Address</h5>
             <p class="mb-3">Dubai, Near <%= @place.landmark %>,
-              <%= @place.country %>
             </p>
             <p class="mb-2 text-black"><i class="icofont-phone-circle text-primary mr-2">Call: <%= @place.mobile %></i>
               <br>Shop Number: <%= @place.shop_number %></p>
@@ -144,75 +144,60 @@
           </div>
           <h5 id="mo" class="text-gray-900 mb-3">More Offers</h5>
           <div class="owl-carousel owl-theme owl-carousel-three offers-interested-carousel mb-4">
+            <% Offer.all.order(created_at: :desc).take(4).each do |offer| %>
             <div class="item">
               <div class="custom-card shadow-sm bg-white h-100">
                 <div class="custom-card-image">
                   <a href="#">
-                    <img class="img-fluid item-img" src="images/custom-card/6.png">
+                    <%= image_tag offer.main_image.url, class: "img-fluid item-img" %>
                   </a>
                   <div class="button-g-btn button-g-btn-up">
-                    <img class="img-fluid" src="images/brand/6.png">
+                    <%= image_tag offer.main_image.url, class: "img-fluid" %>
                   </div>
                 </div>
                 <div class="p-3 pt-4">
                   <div class="custom-card-body">
-                    <h6 class="mb-3"><a class="text-gray-900" href="#">Special Offer: Get Up to
-                        50% Off On Web Hosting
+                    <h6 class="mb-3"><a class="text-gray-900" href="#"><%= offer.offer_code %>
                       </a>
                     </h6>
-                    <p class="text-gray-500 mb-0"><i class="icofont-clock-time"></i> Ends in 18
-                      days</p>
+                    <p class="text-gray-500 mb-0"><i class="icofont-clock-time"></i>  </p>
                   </div>
                 </div>
               </div>
             </div>
+            <% end %>
           </div>
         </div>
       </div>
+
+      <!-- Featured Stores Loop -->
       <div class="col-xl-4 col-sm-12">
-        <div class="bg-white shadow-sm rounded p-4 mb-4">
-          <h5 class="mb-4  text-gray-900">New Stores Deals</h5>
-          <div class="border rounded mb-3">
-            <div class="media p-3 border-bottom align-items-center">
-              <div class="u-avatar">
-                <img class="img-fluid rounded w-40" src="images/brand/1.png" alt="Image Description">
+          <div class="bg-white shadow-sm rounded p-4 mb-4">
+            <h5 class="mb-4 text-gray-900">New Stores Deals</h5>
+            <% Place.where(featured: true).each do |place| %>
+            <div class="border rounded mb-3">
+              <div class="media p-3 border-bottom align-items-center">
+                <div class="u-avatar">
+                  <%= image_tag place.main_image.url, class: "img-fluid rounded w-40" %>
+                </div>
+                <div class="media-body pl-3">
+                  <h4 class="h6 mb-1 text-gray-900"><%= place.title %></h4>
+                  <p class="d-block text-muted m-0"><%= place.offer_code %></p>
+                </div>
               </div>
-              <div class="media-body pl-3">
-                <h4 class="h6 mb-1 text-gray-900">MakeMyTrip</h4>
-                <p class="d-block text-muted m-0">Payment Via RBL Bank</p>
+              <div class="media p-3 align-items-center">
+                <div class="u-avatar">
+                  <small class="mb-1"><%= place.expiration_date %></small>
+                  <h6 class="m-0 text-danger"><i class="icofont-sale-discount"></i> 50% OFF</h6>
+                </div>
+                <div class="media-body pl-3">
+                  <button type="button" class="btn btn-primary float-right btn-sm">Get Offer</button>
+                </div>
               </div>
             </div>
-            <div class="media p-3 align-items-center">
-              <div class="u-avatar">
-                <small class="mb-1">Ends in 18 days</small>
-                <h6 class="m-0 text-danger"><i class="icofont-sale-discount"></i> 50 % OFF</h6>
-              </div>
-              <div class="media-body pl-3">
-                <button type="button" class="btn btn-primary float-right btn-sm">Get Offer</button>
-              </div>
-            </div>
+            <% end %>
           </div>
-          <div class="border rounded">
-            <div class="media p-3 border-bottom align-items-center">
-              <div class="u-avatar">
-                <img class="img-fluid rounded w-40" src="images/brand/2.png" alt="Image Description">
-              </div>
-              <div class="media-body pl-3">
-                <h4 class="h6 mb-1 text-gray-900">Dominos</h4>
-                <p class="d-block text-muted m-0">Payment Via RBL Bank</p>
-              </div>
-            </div>
-            <div class="media p-3 align-items-center">
-              <div class="u-avatar">
-                <small class="mb-1">Ends in 18 days</small>
-                <h6 class="m-0 text-danger"><i class="icofont-sale-discount"></i> 50 % OFF</h6>
-              </div>
-              <div class="media-body pl-3">
-                <button type="button" class="btn btn-primary float-right btn-sm">Get Offer</button>
-              </div>
-            </div>
-          </div>
-        </div>
+
         <div class="bg-white rounded shadow-sm mb-4 p-4 upgrade-coin">
           <h5 class="mb-4  text-gray-900">Earning <a class="light-gray" href="#"><i class="icofont-arrow-right light-gray float-right mt-1 icofont-1x"></i></a></h5>
           <div class="upgrade-coin-header clearfix">
@@ -236,42 +221,20 @@
           <p class="mb-4 p-0">Established fact that a reader will be distracted by the readable content
             of a page when looking at its layout</p>
           <div>
+            <% Offer.where(featured: true).each do |offer| %>
             <div class="list-design-card active p-3">
               <a href="#">
                 <span class="float-right text-info">60% OFF</span>
                 <div class="media">
-                  <img class="mr-3" src="images/brand/3.png" alt="Generic placeholder image">
+                  <%= image_tag offer.main_image.url, class: "mr-3" %>
                   <div class="media-body">
-                    <h6 class="mb-1 text-gray-900">MakeMyTrip</h6>
-                    <p class="mb-0 text-gray-500">Ends in 18 days</p>
+                    <h6 class="mb-1 text-gray-900"><%= offer.title %></h6>
+                    <p class="mb-0 text-gray-500">Ends in <%= offer.expiration_date %> days</p>
                   </div>
                 </div>
               </a>
             </div>
-            <div class="list-design-card active p-3">
-              <a href="#">
-                <span class="float-right text-info">50% OFF</span>
-                <div class="media">
-                  <img class="mr-3" src="images/brand/5.png" alt="Generic placeholder image">
-                  <div class="media-body">
-                    <h6 class="mb-1 text-gray-900">Dominos</h6>
-                    <p class="mb-0 text-gray-500">Ends in 1 days</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="list-design-card active p-3 mb-0">
-              <a href="#">
-                <span class="float-right text-info">60% OFF</span>
-                <div class="media">
-                  <img class="mr-3" src="images/brand/8.png" alt="Generic placeholder image">
-                  <div class="media-body">
-                    <h6 class="mb-1 text-gray-900">Amazon</h6>
-                    <p class="mb-0 text-gray-500">Ends in 20 days</p>
-                  </div>
-                </div>
-              </a>
-            </div>
+            <% end %>
           </div>
         </div>
         <div class="bg-white shadow-sm rounded p-4 mb-4">

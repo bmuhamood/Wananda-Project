@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_26_073206) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_26_181136) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_073206) do
     t.bigint "offer_id", null: false
     t.index ["category_id", "offer_id"], name: "index_categories_offers_on_category_id_and_offer_id"
     t.index ["offer_id", "category_id"], name: "index_categories_offers_on_offer_id_and_category_id"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.integer "state_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "coupans", force: :cascade do |t|
@@ -75,10 +88,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_073206) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "country"
-    t.string "region"
+    t.string "state"
     t.string "city"
     t.boolean "featured", default: false
     t.boolean "verified", default: false
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string "name"
+    t.integer "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

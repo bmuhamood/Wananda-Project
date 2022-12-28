@@ -11,50 +11,27 @@
       <li class="nav-item active">
         <a class="nav-link" href="/"><i class="fas fa-home"></i></a>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span>Coupans</span>
+          <span>All Categories</span>
         </a>
-        <div class="dropdown-menu shadow-sm animated--grow-in border-0" aria-labelledby="navbarDropdown">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="dropdown-item" href="coupans.html">Coupans</a>
-            <a class="dropdown-item" href="coupan-details.html">Coupan Details</a>
-          </div>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% Category.all.each do |category| %>
+            <%= link_to category.name, offers_path(category_id: category.id), class: "dropdown-item" %>
+          <% end %>
         </div>
+      </li>      
+      <li class="nav-item dropdown no-arrow">
+        <span><%= link_to "All Offers", offers_path, class: "nav-link dropdown-toggle" %></span>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span>Offers</span>
+      <li class="nav-item dropdown no-arrow">
+      <span><%= link_to "Stores", stores_path, class: "nav-link dropdown-toggle" %></span>
         </a>
-        <div class="dropdown-menu shadow-sm animated--grow-in border-0" aria-labelledby="navbarDropdown">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="dropdown-item" href="offers.html">Offers</a>
-            <a class="dropdown-item" href="offer-details.html">Offers Details</a>
-          </div>
-        </div>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span>Stores</span>
-        </a>
-        <div class="dropdown-menu shadow-sm animated--grow-in border-0" aria-labelledby="navbarDropdown">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="dropdown-item" href="stores.html">Stores</a>
-            <a class="dropdown-item" href="store-details.html">Stores Details</a>
-          </div>
-        </div>
+      <li class="nav-item dropdown no-arrow">
+        <span><%= link_to "Coupons", coupans_path, class: "nav-link dropdown-toggle" %></span>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span>Restaurant</span>
-        </a>
-        <div class="dropdown-menu shadow-sm animated--grow-in border-0" aria-labelledby="navbarDropdown">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="dropdown-item" href="restaurant.html">Restaurant</a>
-            <a class="dropdown-item" href="restaurant-details.html">Restaurant Details</a>
-          </div>
-        </div>
-      </li>
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span>Account Pages</span>
@@ -221,8 +198,7 @@
     <li class="nav-item dropdown no-arrow">
       <a class="nav-link dropdown-toggle pr-0" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-        <%= image_tag 'user-coupans/2.png', alt: 'user', class: 'img-profile rounded-circle' %>
-        
+        <%= image_tag 'user-coupans/2.png', alt: 'user', class: 'img-profile rounded-circle' %>  
       </a>
 
       <div class="dropdown-menu dropdown-menu-right shadow-sm border-0 animated--grow-in" aria-labelledby="userDropdown">

@@ -1,11 +1,14 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: %i[ show edit update destroy ]
 
-  # GET /offers or /offers.json
   def index
-    @offers = Offer.all
+    if params[:category_id].present?
+      category = Category.find(params[:category_id])
+      @offers = category.offers
+    else
+      @offers = Offer.all
+    end
   end
-
   # GET /offers/1 or /offers/1.json
   def show
   end

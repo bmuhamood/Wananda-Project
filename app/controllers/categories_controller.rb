@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1 or /categories/1.json
   def show
-    @related_offers = @category.offers
+    @offers = Offer.where(category: @category)
   end
 
   # GET /categories/new

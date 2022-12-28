@@ -60,17 +60,18 @@
     <%= form.label :shop_number, style: "display: block" %>
     <%= form.text_field :shop_number %>
   </div>
-  
-  <div class="field" id="country_field">
-    <%= render partial: "shared/country_select_by_pete", locals: {model: form.object.class.name, label: "Country", selected: form.object.country} %>
-    </div>
-  <div class="field" id="region_field">
-    <%= render partial: "shared/region_select_by_pete", locals: {model: form.object.class.name, label: "Region / State", selected_country: form.object.country, selected: form.object.region} %>
-    </div>
-   <div class="field" id="city_field">
-    <%= render partial: "shared/city_select_by_pete", locals: {model: form.object.class.name, label: "City", selected_region: form.object.region, selected_country: form.object.country, selected: form.object.city} %>
-    </div>
-  
+
+  <div>
+    <%= form.label :country %>
+    <%= form.select :country_id, options_from_collection_for_select(Country.all, "id", "name"), include_blank: true %>
+    
+    <%= form.label :state %>
+    <%= form.select :state_id, options_from_collection_for_select(State.all, "id", "name"), include_blank: true %>
+    
+    <%= form.label :city %>
+    <%= form.select :city_id, options_from_collection_for_select(City.all, "id", "name"), include_blank: true %>
+  </div>
+
   <div>
     <%= form.label :street, style: "display: block" %>
     <%= form.text_field :street %>
