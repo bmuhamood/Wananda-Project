@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-light shadow-sm topbar osahan-top-main">
 
+  <!-- render content for logged-in users -->
   <a class="navbar-brand" href="/">
     <%= image_tag 'logo.jpg', alt: 'Logo', class: 'img-fluid w-40' %>
   </a>
@@ -31,7 +32,7 @@
       <li class="nav-item dropdown no-arrow">
         <span><%= link_to "Coupons", coupans_path, class: "nav-link dropdown-toggle" %></span>
       </li>
-
+      <% if user_signed_in? %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span>Account Pages</span>
@@ -50,7 +51,7 @@
             <a class="dropdown-item" href="rating.html">Rating</a>
             <a class="dropdown-item" href="referral.html">Referral</a>
             <div class="dropdown-divider"></div>
-            <h6 class="dropdown-header">Companyd</h6>
+            <h6 class="dropdown-header">Company</h6>
             <a class="dropdown-item" href="not-found.html">404 Not Found</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
             <a class="dropdown-item" href="terms.html">Terms</a>
@@ -67,7 +68,6 @@
   </div>
 
   <ul class="navbar-nav ml-auto flex-direction-row">
-
     <li class="nav-item dropdown no-arrow d-sm-none">
       <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-search fa-fw"></i>
@@ -90,10 +90,8 @@
     <li class="nav-item dropdown no-arrow mx-1">
       <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-bell fa-fw"></i>
-
         <span class="badge badge-danger badge-counter">3</span>
       </a>
-
       <div class="dropdown-list dropdown-menu dropdown-menu-right border-0 shadow-sm animated--grow-in" aria-labelledby="alertsDropdown">
         <h6 class="dropdown-header">
           Alerts Center
@@ -197,7 +195,7 @@
 
     <li class="nav-item dropdown no-arrow">
       <a class="nav-link dropdown-toggle pr-0" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= current_user.email %></span>
         <%= image_tag 'user-coupans/2.png', alt: 'user', class: 'img-profile rounded-circle' %>  
       </a>
 
@@ -219,5 +217,13 @@
         </a>
       </div>
     </li>
+    <% else %>
+    <li class="nav-item dropdown no-arrow">
+      <span><%= link_to "Sign In", new_user_session_path, class: "nav-link dropdown-toggle" %></span>
+    </li>    
+    <% end %>
+    </div>
   </ul>
 </nav>
+
+

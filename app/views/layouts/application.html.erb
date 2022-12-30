@@ -25,7 +25,9 @@
       <div id="wrapper">
         <div id="content-wrapper">
           <div id="content">
+
             <%= render partial: "partials/navbar" %>
+
             <%= yield %>
             <%= render partial: "partials/footer" %>   
             <a class="scroll-to-top rounded-circle" href="#page-top">
@@ -44,7 +46,7 @@
                   <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                   <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
                   </div>
                 </div>
               </div>

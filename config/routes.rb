@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
+  delete '/logout', to: 'sessions#destroy'
+  root to: "home#index"
   get 'cities/index'
   get 'cities/create'
   get 'cities/show'

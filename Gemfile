@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'faraday'
 gem 'httparty'
+gem 'devise'
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 

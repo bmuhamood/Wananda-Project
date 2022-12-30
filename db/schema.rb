@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_28_215308) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_29_002939) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_215308) do
     t.string "image"
     t.boolean "featured", default: false
     t.integer "view_count", default: 0
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_coupans_on_user_id"
   end
 
   create_table "offers", force: :cascade do |t|
@@ -71,6 +73,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_215308) do
     t.integer "category_id"
     t.boolean "featured", default: false
     t.boolean "verified", default: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_offers_on_user_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -93,6 +97,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_215308) do
     t.string "city"
     t.boolean "featured", default: false
     t.boolean "verified", default: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_places_on_user_id"
   end
 
   create_table "states", force: :cascade do |t|
@@ -102,9 +108,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_215308) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
   create_table "view_count_triggers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "coupans", "users"
+  add_foreign_key "offers", "users"
+  add_foreign_key "places", "users"
 end

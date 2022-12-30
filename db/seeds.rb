@@ -6,3 +6,5 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 # Coupan.delete_all
+# Offer.where(user_id: nil).destroy_all
+User.create(name: "John Doe", email: "test@example.com")

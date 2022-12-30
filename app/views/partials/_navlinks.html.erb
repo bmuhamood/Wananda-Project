@@ -1,0 +1,23 @@
+<li class="nav-item active">
+  <a class="nav-link" href="/"><i class="fas fa-home"></i></a>
+</li>
+<li class="nav-item dropdown no-arrow">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span>All Categories</span>
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <% Category.all.each do |category| %>
+      <%= link_to category.name, offers_path(category_id: category.id), class: "dropdown-item" %>
+    <% end %>
+  </div>
+</li>      
+<li class="nav-item dropdown no-arrow">
+  <span><%= link_to "All Offers", offers_path, class: "nav-link dropdown-toggle" %></span>
+</li>
+<li class="nav-item dropdown no-arrow">
+<span><%= link_to "Stores", stores_path, class: "nav-link dropdown-toggle" %></span>
+  </a>
+</li>
+<li class="nav-item dropdown no-arrow">
+  <span><%= link_to "Coupons", coupans_path, class: "nav-link dropdown-toggle" %></span>
+</li>
