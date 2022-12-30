@@ -66,6 +66,6 @@ class CoupansController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def coupan_params
-      params.require(:coupan).permit(:title, :coupon_code, :redemption_instructions, :expiration_date, :main_image, :image, :featured)
+      params.require(:coupan).permit(:title, :coupon_code, :redemption_instructions, :expiration_date, :main_image, :image, :featured, :user_id)
     end
 end
