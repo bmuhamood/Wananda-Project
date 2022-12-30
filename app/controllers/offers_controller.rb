@@ -48,10 +48,9 @@ class OffersController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @offer.errors, status: :unprocessable_entity }
       end
-    end    end
+    end
   end
 
-  # DELETE /offers/1 or /offers/1.json
   def destroy
     @offer.destroy
     @offer_image = Image.find(params[:id])
@@ -59,12 +58,11 @@ class OffersController < ApplicationController
     @offer_image.destroy
     respond_to do |format|
       format.html {redirect_to item_url(item), notice: 'Item photo was successfully destroyed.'}
-    respond_to do |format|
       format.html { redirect_to offers_url, notice: "Offer was successfully destroyed." }
       format.json { head :no_content }
     end
-  end   end
-end
+  end
+
   def remove_image_at_index(index)
     remain_images = @offer.images # copy the array
     deleted_image = remain_images.delete_at(index) # delete the target image
@@ -82,4 +80,5 @@ end
     def offer_params
       params.require(:offer).permit(:title, :main_image, :offer_code, :offer_instructions, :expiration_date, :opening_time, :closing_time, :mobile, :address, {images: []}, :category_id, :featured, :verified, :user_id)
     end
+end
 end
